@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sybil's Portfolio Website</title>
+    <title>Sybil Azriel | 1st Alien</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <!-- 3D Gradient Background -->
+    <div class="gradient-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        <div class="gradient-noise"></div>
+    </div>
+
     <canvas id="starfield"></canvas>
 
     <!-- BOTTOM PILL NAVIGATION -->
@@ -24,11 +33,7 @@
             <i class='bx bx-briefcase'></i>
             <span>Services</span>
         </a>
-        <a href="#portfolio" class="pill-link" data-section="portfolio">
-            <i class='bx bx-carousel'></i>
-            <span>Portfolio</span>
-        </a>
-        <a href="scrapyard.html" class="pill-link">
+        <a href="#scrapyard" class="pill-link" data-section="scrapyard">
             <i class='bx bx-planet'></i>
             <span>Scrapyard</span>
         </a>
@@ -38,16 +43,14 @@
         </a>
     </nav>
 
-    <!-- LOGO (floating top-left) -->
+    <!-- LOGO -->
     <div class="floating-logo">
         <img src="image/alienlogo.png" alt="1st Alien" class="img-logo">
     </div>
 
     <!-- HOME -->
-    <section class="home parallax-section" id="home" data-speed="0.3">
-        <div class="parallax-bg" style="background-image: url(image/SlidingImages/HEROPAGE.png);"></div>
-        <div class="parallax-overlay"></div>
-        <div class="home-content">
+    <section class="home" id="home">
+        <div class="home-content reveal">
             <h1 class="glow">Hi, I'm Sybil Azriel</h1>
             <h3 class="typing-text"></h3>
             <p>A versatile creative with a passion for bringing ideas to life.</p>
@@ -66,11 +69,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section class="about-section parallax-section" id="about" data-speed="0.5">
-        <div class="video-overlay"></div>
-        <video class="video-background" autoplay muted loop playsinline>
-            <source src="video/space.mp4" type="video/mp4">
-        </video>
+    <section class="about-section" id="about">
         <div class="about-container reveal">
             <h1 class="glow">About Me</h1>
             <p class="about-text">
@@ -80,7 +79,7 @@
     </section>
 
     <!-- SERVICES -->
-    <section class="services-section parallax-section" id="services" data-speed="0.4">
+    <section class="services-section" id="services">
         <div class="container">
             <h1 class="glow">My Services</h1>
             <div class="row">
@@ -117,90 +116,69 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO - ALIEN PORTAL -->
-    <section class="portfolio-section" id="portfolio">
-        <canvas id="alienCanvas"></canvas>
+    <!-- SCRAPYARD / PORTFOLIO -->
+    <section class="scrapyard-section" id="scrapyard">
+        <div class="scrapyard-header reveal">
+            <h1 class="glow">Digital Scrapyard</h1>
+            <p>A collection of works, experiments, and creative debris.</p>
+        </div>
 
-        <!-- Floating SVG UFOs -->
-        <svg class="ufo ufo-1" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="60" cy="38" rx="55" ry="14" fill="rgba(0,171,240,0.15)" stroke="rgba(0,171,240,0.4)" stroke-width="1.5"/>
-            <ellipse cx="60" cy="30" rx="30" ry="18" fill="rgba(6,16,24,0.8)" stroke="rgba(0,171,240,0.5)" stroke-width="1.5"/>
-            <circle cx="42" cy="38" r="3" fill="#00abf0" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite"/></circle>
-            <circle cx="60" cy="40" r="3" fill="#73bf43" opacity="0.8"><animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/></circle>
-            <circle cx="78" cy="38" r="3" fill="#00abf0" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" repeatCount="indefinite"/></circle>
-            <!-- Beam -->
-            <polygon points="45,44 75,44 90,70 30,70" fill="url(#beamGrad1)" opacity="0.3">
-                <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2s" repeatCount="indefinite"/>
-            </polygon>
-            <defs><linearGradient id="beamGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00abf0" stop-opacity="0.6"/><stop offset="100%" stop-color="#00abf0" stop-opacity="0"/></linearGradient></defs>
-        </svg>
+        <div class="scrapyard-grid">
+            <div class="scrap-item reveal">
+                <img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="Essential Cosmetics">
+                <div class="scrap-caption">
+                    <strong>Essential Cosmetics Branding</strong>
+                    Full brand identity design including logo, packaging, and social media assets.
+                </div>
+                <div class="scrap-tags">
+                    <span class="scrap-tag">Branding</span>
+                    <span class="scrap-tag">Packaging</span>
+                </div>
+            </div>
 
-        <svg class="ufo ufo-2" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="60" cy="38" rx="55" ry="14" fill="rgba(115,191,67,0.1)" stroke="rgba(115,191,67,0.35)" stroke-width="1.5"/>
-            <ellipse cx="60" cy="30" rx="30" ry="18" fill="rgba(6,16,24,0.8)" stroke="rgba(115,191,67,0.45)" stroke-width="1.5"/>
-            <circle cx="42" cy="38" r="3" fill="#73bf43" opacity="0.8"><animate attributeName="opacity" values="1;0.3;1" dur="1.1s" repeatCount="indefinite"/></circle>
-            <circle cx="60" cy="40" r="3" fill="#00abf0" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="0.9s" repeatCount="indefinite"/></circle>
-            <circle cx="78" cy="38" r="3" fill="#73bf43" opacity="0.8"><animate attributeName="opacity" values="1;0.3;1" dur="1.3s" repeatCount="indefinite"/></circle>
-            <polygon points="45,44 75,44 90,70 30,70" fill="url(#beamGrad2)" opacity="0.25">
-                <animate attributeName="opacity" values="0.15;0.35;0.15" dur="2.5s" repeatCount="indefinite"/>
-            </polygon>
-            <defs><linearGradient id="beamGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#73bf43" stop-opacity="0.5"/><stop offset="100%" stop-color="#73bf43" stop-opacity="0"/></linearGradient></defs>
-        </svg>
+            <div class="scrap-item reveal">
+                <img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="aeTech Digital Hub">
+                <div class="scrap-caption">
+                    <strong>aeTech Digital Hub</strong>
+                    Digital presence and marketing materials for a tech startup.
+                </div>
+                <div class="scrap-tags">
+                    <span class="scrap-tag">Graphic Design</span>
+                    <span class="scrap-tag">Marketing</span>
+                </div>
+            </div>
 
-        <svg class="ufo ufo-3" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="60" cy="38" rx="55" ry="14" fill="rgba(0,171,240,0.1)" stroke="rgba(0,171,240,0.3)" stroke-width="1"/>
-            <ellipse cx="60" cy="30" rx="30" ry="18" fill="rgba(6,16,24,0.8)" stroke="rgba(0,171,240,0.4)" stroke-width="1"/>
-            <circle cx="50" cy="38" r="2.5" fill="#00abf0" opacity="0.7"><animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/></circle>
-            <circle cx="70" cy="38" r="2.5" fill="#73bf43" opacity="0.7"><animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/></circle>
-        </svg>
+            <div class="scrap-item reveal">
+                <img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="MoreClouds LTD">
+                <div class="scrap-caption">
+                    <strong>MoreClouds LTD Cloud Kitchen</strong>
+                    Brand identity and menu design for a cloud kitchen concept.
+                </div>
+                <div class="scrap-tags">
+                    <span class="scrap-tag">Branding</span>
+                    <span class="scrap-tag">Food</span>
+                </div>
+            </div>
 
-        <!-- Floating Aliens -->
-        <svg class="alien alien-1" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="40" cy="35" rx="28" ry="32" fill="rgba(115,191,67,0.12)" stroke="rgba(115,191,67,0.4)" stroke-width="1.5"/>
-            <ellipse cx="28" cy="28" rx="10" ry="12" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.5"/>
-            <ellipse cx="52" cy="28" rx="10" ry="12" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.5"/>
-            <ellipse cx="28" cy="28" rx="8" ry="10" fill="#0a0a0a"/>
-            <ellipse cx="52" cy="28" rx="8" ry="10" fill="#0a0a0a"/>
-            <circle cx="30" cy="26" r="2" fill="rgba(0,171,240,0.6)"><animate attributeName="r" values="1.5;2.5;1.5" dur="2s" repeatCount="indefinite"/></circle>
-            <circle cx="54" cy="26" r="2" fill="rgba(0,171,240,0.6)"><animate attributeName="r" values="2.5;1.5;2.5" dur="2s" repeatCount="indefinite"/></circle>
-            <path d="M 34 48 Q 40 54 46 48" fill="none" stroke="rgba(115,191,67,0.3)" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="40" y1="67" x2="40" y2="85" stroke="rgba(115,191,67,0.2)" stroke-width="1.5"/>
-            <line x1="30" y1="55" x2="18" y2="70" stroke="rgba(115,191,67,0.2)" stroke-width="1.5"/>
-            <line x1="50" y1="55" x2="62" y2="70" stroke="rgba(115,191,67,0.2)" stroke-width="1.5"/>
-        </svg>
-
-        <svg class="alien alien-2" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="40" cy="35" rx="25" ry="30" fill="rgba(0,171,240,0.08)" stroke="rgba(0,171,240,0.3)" stroke-width="1.5"/>
-            <ellipse cx="30" cy="28" rx="7" ry="9" fill="#0a0a0a"/>
-            <ellipse cx="50" cy="28" rx="7" ry="9" fill="#0a0a0a"/>
-            <circle cx="31" cy="27" r="2" fill="rgba(115,191,67,0.6)"><animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/></circle>
-            <circle cx="51" cy="27" r="2" fill="rgba(115,191,67,0.6)"><animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/></circle>
-            <path d="M 35 46 Q 40 50 45 46" fill="none" stroke="rgba(0,171,240,0.25)" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-
-        <!-- CONTENT -->
-        <div class="portfolio-portal-content">
-            <h1 class="glow portal-title">PORTFOLIO</h1>
-            <p class="portal-subtitle">Explore the creative universe</p>
-
-            <a href="scrapyard.html" class="portal-cta" id="portalBtn">
-                <span class="portal-cta-text">Enter the Scrapyard</span>
-                <span class="portal-cta-icon"><i class='bx bx-planet'></i></span>
-                <div class="portal-ring"></div>
-                <div class="portal-ring ring-2"></div>
-                <div class="portal-ring ring-3"></div>
-            </a>
-
-            <!-- Preview thumbnails orbiting -->
-            <div class="orbit-ring">
-                <a href="https://1stalien.pixieset.com/essentialcosmetics/" target="_blank" class="orbit-thumb" style="--i:0"><img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt=""></a>
-                <a href="https://1stalien.pixieset.com/aetechdigitalhub/" target="_blank" class="orbit-thumb" style="--i:1"><img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt=""></a>
-                <a href="https://1stalien.pixieset.com/morecloudsltdcloudkitchen/" target="_blank" class="orbit-thumb" style="--i:2"><img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt=""></a>
-                <a href="https://1stalien.pixieset.com/dictascateringservices/" target="_blank" class="orbit-thumb" style="--i:3"><img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt=""></a>
-                <a href="https://1stalien.pixieset.com/folder/NvMvNkdbGfaI/" target="_blank" class="orbit-thumb" style="--i:4"><span class="orbit-label">Logos</span></a>
+            <div class="scrap-item reveal">
+                <img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="Dicta's Catering">
+                <div class="scrap-caption">
+                    <strong>Dicta's Catering Services</strong>
+                    Logo design, flyers, and social media content for a catering business.
+                </div>
+                <div class="scrap-tags">
+                    <span class="scrap-tag">Logo</span>
+                    <span class="scrap-tag">Social Media</span>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content"></div>
+    </div>
 
     <footer class="site-footer">
         <div class="footer-content">
