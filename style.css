@@ -230,33 +230,51 @@ body {
     }
 }
 
-/* ===== HOME SECTION ===== */
-.home {
+/* ===== HERO SPLIT LAYOUT ===== */
+.hero-split {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    z-index: 2;
+}
+
+.hero-left {
+    flex: 1;
     display: flex;
     align-items: center;
-    padding: 0 10%;
-    z-index: 2;
+    justify-content: center;
+    padding: 80px 5%;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
 }
 
 .home-content {
     position: relative;
     max-width: 600px;
     padding: 40px;
-    border-radius: 24px;
-    background: rgba(6, 16, 24, 0.3);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 171, 240, 0.1);
     z-index: 2;
 }
 
-@media (max-width: 768px) {
-    .home-content {
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+@media (max-width: 900px) {
+    .hero-split {
+        flex-direction: column-reverse;
+    }
+    .hero-left,
+    .hero-right {
+        padding: 40px 8%;
+    }
+    .hero-right {
+        padding-top: 120px;
+    }
+    .hero-left {
+        padding-bottom: 60px;
     }
 }
 
@@ -350,13 +368,11 @@ body {
 
 /* ===== SOCIAL ICONS ===== */
 .home-sci {
-    position: absolute;
-    bottom: 100px;
     width: 200px;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 10px 0;
+    margin-top: 20px;
     z-index: 2;
 }
 
@@ -381,18 +397,7 @@ body {
     text-shadow: 0 0 15px rgba(0, 171, 240, 0.6);
 }
 
-/* ===== ABOUT SECTION ===== */
-.about-section {
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    padding: 80px 5%;
-}
-
+/* ===== ABOUT (inside hero-left) ===== */
 .about-container {
     position: relative;
     background: rgba(6, 16, 24, 0.3);
@@ -400,29 +405,24 @@ body {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 171, 240, 0.12);
     border-radius: 24px;
-    padding: 60px;
-    width: 60%;
+    padding: 50px;
+    width: 100%;
+    max-width: 520px;
     color: white;
     z-index: 1;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .about-container h1 {
-    margin-bottom: 30px;
-    font-size: 36px;
+    margin-bottom: 20px;
+    font-size: 32px;
 }
 
 .about-text {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
-}
-
-@media screen and (max-width: 1000px) {
-    .about-container {
-        width: 90%;
-        padding: 40px;
-    }
+    color: rgba(237, 237, 237, 0.8);
 }
 
 /* ===== SERVICES SECTION ===== */
@@ -441,7 +441,7 @@ body {
     position: relative;
     text-transform: uppercase;
     text-align: center;
-    padding-top: 10%;
+    padding-top: 0;
     margin-bottom: 60px;
     color: #ededed;
 }
