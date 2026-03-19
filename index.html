@@ -10,44 +10,66 @@
 <body>
     <canvas id="starfield"></canvas>
 
-    <header class="header">
-        <img src="image/alienlogo.png" alt="" class="img-logo">
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="https://wa.me/233020919182">Contact</a>
-        </nav>
-    </header>
+    <!-- BOTTOM PILL NAVIGATION -->
+    <nav class="pill-nav">
+        <a href="#home" class="pill-link active" data-section="home">
+            <i class='bx bx-home'></i>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="pill-link" data-section="about">
+            <i class='bx bx-user'></i>
+            <span>About</span>
+        </a>
+        <a href="#services" class="pill-link" data-section="services">
+            <i class='bx bx-briefcase'></i>
+            <span>Services</span>
+        </a>
+        <a href="#portfolio" class="pill-link" data-section="portfolio">
+            <i class='bx bx-carousel'></i>
+            <span>Portfolio</span>
+        </a>
+        <a href="scrapyard.html" class="pill-link">
+            <i class='bx bx-planet'></i>
+            <span>Scrapyard</span>
+        </a>
+        <a href="https://wa.me/233020919182" class="pill-link" target="_blank">
+            <i class='bx bx-message-rounded-dots'></i>
+            <span>Contact</span>
+        </a>
+    </nav>
 
-    <section class="home" id="home">
+    <!-- LOGO (floating top-left) -->
+    <div class="floating-logo">
+        <img src="image/alienlogo.png" alt="1st Alien" class="img-logo">
+    </div>
+
+    <!-- HOME -->
+    <section class="home parallax-section" id="home" data-speed="0.3">
+        <div class="parallax-bg" style="background-image: url(image/SlidingImages/HEROPAGE.png);"></div>
+        <div class="parallax-overlay"></div>
         <div class="home-content">
-
             <h1 class="glow">Hi, I'm Sybil Azriel</h1>
             <h3 class="typing-text"></h3>
-            <p>A versatile creative with a passion for bringing ideas to life.
-            </p>
+            <p>A versatile creative with a passion for bringing ideas to life.</p>
 
             <div class="btn-box">
                 <a href="https://www.instagram.com/_1st.alien/" target="_blank">Hire Me</a>
                 <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank">Let's Talk</a>
             </div>
         </div>
-        <div class="orb"></div>
 
         <div class="home-sci">
-            <a href="https://www.instagram.com/_1st.alien/" target="_blank"><i class='bx bxl-instagram' ></i></a>
-            <a href="#"><i class='bx bxl-facebook' ></i></a>
-            <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank"><i class='bx bxl-whatsapp-square' ></i></a>
+            <a href="https://www.instagram.com/_1st.alien/" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank"><i class='bx bxl-whatsapp-square'></i></a>
         </div>
-
     </section>
-    <section class="about-section" id="about">
+
+    <!-- ABOUT -->
+    <section class="about-section parallax-section" id="about" data-speed="0.5">
         <div class="video-overlay"></div>
-        <video class="video-background" autoplay muted loop>
+        <video class="video-background" autoplay muted loop playsinline>
             <source src="video/space.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
         <div class="about-container reveal">
             <h1 class="glow">About Me</h1>
@@ -56,65 +78,91 @@
             </p>
         </div>
     </section>
-    <section class="services-section" id="services">
+
+    <!-- SERVICES -->
+    <section class="services-section parallax-section" id="services" data-speed="0.4">
         <div class="container">
             <h1 class="glow">My Services</h1>
             <div class="row">
-                <a href="https://1stalien.pixieset.com" target="_blank"><div class="service reveal">
-                    <i class='bx bxs-pen'></i>
-                    <h2>Graphic Design</h2>
-                    <p>
-                        Creating visually stunning designs that tell your brand's story. <br>
-                        Branding, logo design, and print materials.<br>
-                        Social media graphics and marketing collateral <br>
-                    </p>
-                </div>
+                <a href="https://1stalien.pixieset.com" target="_blank">
+                    <div class="service reveal">
+                        <i class='bx bxs-pen'></i>
+                        <h2>Graphic Design</h2>
+                        <p>
+                            Creating visually stunning designs that tell your brand's story.<br>
+                            Branding, logo design, and print materials.<br>
+                            Social media graphics and marketing collateral
+                        </p>
+                    </div>
                 </a>
                 <div class="service reveal">
-                    <i class='bx bxs-videos' ></i>
+                    <i class='bx bxs-videos'></i>
                     <h2>Motion Graphics</h2>
                     <p>
-                        Animating your ideas into dynamic and engaging visuals. <br>
-                        Explainer videos, product animations, and title sequences. <br>
-                        Bringing your brand to life through motion. <br>
+                        Animating your ideas into dynamic and engaging visuals.<br>
+                        Explainer videos, product animations, and title sequences.<br>
+                        Bringing your brand to life through motion.
                     </p>
                 </div>
                 <div class="service reveal">
-                    <i class='bx bxl-blender' ></i>
+                    <i class='bx bxl-blender'></i>
                     <h2>3D Design</h2>
                     <p>
-                        Creating immersive and realistic 3D visuals. <br>
-                        Product visualizations, architectural renderings, and game assets. <br>
-                        Bringing your imagination to life in the digital world. <br>
+                        Creating immersive and realistic 3D visuals.<br>
+                        Product visualizations, architectural renderings, and game assets.<br>
+                        Bringing your imagination to life in the digital world.
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
 
-<section class="images-container" id="portfolio">
-    <h1 class="portfolio-header glow">PORTFOLIO</h1>
-    <div class="portfolio-links">
-        <a href="https://1stalien.pixieset.com/essentialcosmetics/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="">
-            Essential Cosmetics
-        </a>
-        <a href="https://1stalien.pixieset.com/aetechdigitalhub/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="">
-            aeTech Digital Hub
-        </a>
-        <a href="https://1stalien.pixieset.com/morecloudsltdcloudkitchen/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="">
-            MoreClouds LTD
-        </a>
-        <a href="https://1stalien.pixieset.com/dictascateringservices/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="">
-            Dicta's Catering Services
-        </a>
-        <a href="https://1stalien.pixieset.com/folder/NvMvNkdbGfaI/" target="_blank" class="portfolio-card reveal">
-            Logos And Mockups
-        </a>
+    <!-- PORTFOLIO - 3D CAROUSEL -->
+    <section class="portfolio-section" id="portfolio">
+        <h1 class="portfolio-header glow">PORTFOLIO</h1>
+        <div class="carousel-wrapper">
+            <div class="carousel-scene">
+                <div class="carousel-ring">
+                    <div class="carousel-card">
+                        <a href="https://1stalien.pixieset.com/essentialcosmetics/" target="_blank">
+                            <img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="">
+                            <span>Essential Cosmetics</span>
+                        </a>
+                    </div>
+                    <div class="carousel-card">
+                        <a href="https://1stalien.pixieset.com/aetechdigitalhub/" target="_blank">
+                            <img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="">
+                            <span>aeTech Digital Hub</span>
+                        </a>
+                    </div>
+                    <div class="carousel-card">
+                        <a href="https://1stalien.pixieset.com/morecloudsltdcloudkitchen/" target="_blank">
+                            <img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="">
+                            <span>MoreClouds LTD</span>
+                        </a>
+                    </div>
+                    <div class="carousel-card">
+                        <a href="https://1stalien.pixieset.com/dictascateringservices/" target="_blank">
+                            <img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="">
+                            <span>Dicta's Catering Services</span>
+                        </a>
+                    </div>
+                    <div class="carousel-card">
+                        <a href="https://1stalien.pixieset.com/folder/NvMvNkdbGfaI/" target="_blank">
+                            <div class="card-placeholder"><i class='bx bx-images'></i></div>
+                            <span>Logos And Mockups</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev"><i class='bx bx-chevron-left'></i></button>
+                <button class="carousel-btn next"><i class='bx bx-chevron-right'></i></button>
+            </div>
+        </div>
+    </section>
 
-    </div>
-</section>
-<footer class="site-footer">
+    <footer class="site-footer">
         <div class="footer-content">
             &copy; 2025 Sybil Azriel | Designed by 1st Alien | <a href="mailto:sybilazriel4@gmail.com">sybilazriel4@gmail.com</a>
         </div>
