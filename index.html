@@ -8,7 +8,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
+    <canvas id="starfield"></canvas>
+
     <header class="header">
         <img src="image/alienlogo.png" alt="" class="img-logo">
         <nav class="navbar">
@@ -22,9 +23,9 @@
 
     <section class="home" id="home">
         <div class="home-content">
-            
-            <h1>Hi, I'm Sybil Azriel</h1>
-            <h3>Creative Mind</h3>
+
+            <h1 class="glow">Hi, I'm Sybil Azriel</h1>
+            <h3 class="typing-text"></h3>
             <p>A versatile creative with a passion for bringing ideas to life.
             </p>
 
@@ -40,7 +41,7 @@
             <a href="#"><i class='bx bxl-facebook' ></i></a>
             <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank"><i class='bx bxl-whatsapp-square' ></i></a>
         </div>
-        
+
     </section>
     <section class="about-section" id="about">
         <div class="video-overlay"></div>
@@ -48,18 +49,18 @@
             <source src="video/space.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="about-container">
-            <h1>About Me</h1>
+        <div class="about-container reveal">
+            <h1 class="glow">About Me</h1>
             <p class="about-text">
-                I’m a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs. With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not only stand out but also communicate effectively. I’m committed to collaborating closely with clients to craft innovative solutions that bring their vision to life and exceed expectations.
+                I'm a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs. With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not only stand out but also communicate effectively. I'm committed to collaborating closely with clients to craft innovative solutions that bring their vision to life and exceed expectations.
             </p>
         </div>
     </section>
     <section class="services-section" id="services">
         <div class="container">
-            <h1>My Services</h1>
+            <h1 class="glow">My Services</h1>
             <div class="row">
-                <a href="https://1stalien.pixieset.com" target="_blank"><div class="service">
+                <a href="https://1stalien.pixieset.com" target="_blank"><div class="service reveal">
                     <i class='bx bxs-pen'></i>
                     <h2>Graphic Design</h2>
                     <p>
@@ -69,7 +70,7 @@
                     </p>
                 </div>
                 </a>
-                <div class="service">
+                <div class="service reveal">
                     <i class='bx bxs-videos' ></i>
                     <h2>Motion Graphics</h2>
                     <p>
@@ -78,7 +79,7 @@
                         Bringing your brand to life through motion. <br>
                     </p>
                 </div>
-                <div class="service">
+                <div class="service reveal">
                     <i class='bx bxl-blender' ></i>
                     <h2>3D Design</h2>
                     <p>
@@ -87,30 +88,30 @@
                         Bringing your imagination to life in the digital world. <br>
                     </p>
                 </div>
-                
+
             </div>
         </div>
     </section>
 
 <section class="images-container" id="portfolio">
-    <h1 class="portfolio-header">PORTFOLIO</h1>
+    <h1 class="portfolio-header glow">PORTFOLIO</h1>
     <div class="portfolio-links">
-        <a href="https://1stalien.pixieset.com/essentialcosmetics/" target="_blank" class="portfolio-card"><img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="">
+        <a href="https://1stalien.pixieset.com/essentialcosmetics/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="">
             Essential Cosmetics
         </a>
-        <a href="https://1stalien.pixieset.com/aetechdigitalhub/" target="_blank" class="portfolio-card"><img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="">
+        <a href="https://1stalien.pixieset.com/aetechdigitalhub/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="">
             aeTech Digital Hub
         </a>
-        <a href="https://1stalien.pixieset.com/morecloudsltdcloudkitchen/" target="_blank" class="portfolio-card"><img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="">
+        <a href="https://1stalien.pixieset.com/morecloudsltdcloudkitchen/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="">
             MoreClouds LTD
         </a>
-        <a href="https://1stalien.pixieset.com/dictascateringservices/" target="_blank" class="portfolio-card"><img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="">
+        <a href="https://1stalien.pixieset.com/dictascateringservices/" target="_blank" class="portfolio-card reveal"><img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="">
             Dicta's Catering Services
         </a>
-        <a href="https://1stalien.pixieset.com/folder/NvMvNkdbGfaI/" target="_blank" class="portfolio-card">
+        <a href="https://1stalien.pixieset.com/folder/NvMvNkdbGfaI/" target="_blank" class="portfolio-card reveal">
             Logos And Mockups
         </a>
-    
+
     </div>
 </section>
 <footer class="site-footer">
@@ -122,5 +123,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
