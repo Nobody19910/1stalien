@@ -517,6 +517,12 @@ body {
     column-gap: 20px;
 }
 
+a.scrap-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .scrap-item {
     break-inside: avoid;
     margin-bottom: 20px;
