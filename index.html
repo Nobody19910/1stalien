@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <!-- 3D Gradient Background -->
+    <!-- Warm Gradient Background -->
     <div class="gradient-bg">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
@@ -19,6 +19,14 @@
 
     <canvas id="starfield"></canvas>
 
+    <!-- Interactive floating shapes -->
+    <div class="interactive-shape shape-ring" style="width:60px;height:60px;top:15%;left:8%;"></div>
+    <div class="interactive-shape shape-dot" style="width:14px;height:14px;top:25%;left:75%;"></div>
+    <div class="interactive-shape shape-square" style="width:40px;height:40px;top:65%;left:12%;"></div>
+    <div class="interactive-shape shape-ring" style="width:30px;height:30px;top:80%;left:85%;"></div>
+    <div class="interactive-shape shape-dot" style="width:20px;height:20px;top:45%;left:90%;"></div>
+    <div class="interactive-shape shape-square" style="width:24px;height:24px;top:10%;left:55%;"></div>
+
     <!-- BOTTOM PILL NAVIGATION -->
     <nav class="pill-nav">
         <a href="#home" class="pill-link active" data-section="home">
@@ -28,10 +36,6 @@
         <a href="#about" class="pill-link" data-section="about">
             <i class='bx bx-user'></i>
             <span>About</span>
-        </a>
-        <a href="#services" class="pill-link" data-section="services">
-            <i class='bx bx-briefcase'></i>
-            <span>Services</span>
         </a>
         <a href="#scrapyard" class="pill-link" data-section="scrapyard">
             <i class='bx bx-planet'></i>
@@ -48,20 +52,10 @@
         <img src="image/alienlogo.png" alt="1st Alien" class="img-logo">
     </div>
 
-    <!-- HERO SPLIT: About left, Home right -->
+    <!-- HERO SPLIT: Name left, About+Services right -->
     <section class="hero-split" id="home">
-        <!-- LEFT: About -->
-        <div class="hero-left" id="about">
-            <div class="about-container reveal">
-                <h1 class="glow">About Me</h1>
-                <p class="about-text">
-                    I'm a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs. With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not only stand out but also communicate effectively.
-                </p>
-            </div>
-        </div>
-
-        <!-- RIGHT: Name & CTA -->
-        <div class="hero-right">
+        <!-- LEFT: Name & CTA -->
+        <div class="hero-left">
             <div class="home-content reveal">
                 <h1 class="glow">Hi, I'm Sybil Azriel</h1>
                 <h3 class="typing-text"></h3>
@@ -79,41 +73,37 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- SERVICES (below the hero split) -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <h1 class="glow">My Services</h1>
-            <div class="row">
-                <a href="https://1stalien.pixieset.com" target="_blank">
-                    <div class="service reveal">
-                        <i class='bx bxs-pen'></i>
-                        <h2>Graphic Design</h2>
-                        <p>
-                            Creating visually stunning designs that tell your brand's story.<br>
-                            Branding, logo design, and print materials.<br>
-                            Social media graphics and marketing collateral
-                        </p>
+        <!-- RIGHT: About + Compact Services -->
+        <div class="hero-right" id="about">
+            <div class="about-container reveal">
+                <h1 class="glow">About Me</h1>
+                <p class="about-text">
+                    I'm a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs. With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not only stand out but also communicate effectively.
+                </p>
+            </div>
+
+            <div class="services-compact reveal">
+                <a href="https://1stalien.pixieset.com" target="_blank" class="service-mini">
+                    <i class='bx bxs-pen'></i>
+                    <div class="service-mini-text">
+                        <h3>Graphic Design</h3>
+                        <p>Branding, logos, social media graphics & marketing collateral</p>
                     </div>
                 </a>
-                <div class="service reveal">
+                <div class="service-mini">
                     <i class='bx bxs-videos'></i>
-                    <h2>Motion Graphics</h2>
-                    <p>
-                        Animating your ideas into dynamic and engaging visuals.<br>
-                        Explainer videos, product animations, and title sequences.<br>
-                        Bringing your brand to life through motion.
-                    </p>
+                    <div class="service-mini-text">
+                        <h3>Motion Graphics</h3>
+                        <p>Explainer videos, product animations & title sequences</p>
+                    </div>
                 </div>
-                <div class="service reveal">
+                <div class="service-mini">
                     <i class='bx bxl-blender'></i>
-                    <h2>3D Design</h2>
-                    <p>
-                        Creating immersive and realistic 3D visuals.<br>
-                        Product visualizations, architectural renderings, and game assets.<br>
-                        Bringing your imagination to life in the digital world.
-                    </p>
+                    <div class="service-mini-text">
+                        <h3>3D Design</h3>
+                        <p>Product visualizations, renderings & immersive 3D visuals</p>
+                    </div>
                 </div>
             </div>
         </div>
