@@ -171,6 +171,30 @@ if (lightbox) {
   });
 }
 
+// ===== LOGO COLOR INVERSION BASED ON BACKGROUND =====
+const floatingLogo = document.querySelector('.floating-logo');
+if (floatingLogo) {
+  function checkLogoBg() {
+    const logo = floatingLogo.querySelector('.img-logo');
+    const rect = logo.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const el = document.elementFromPoint(cx, cy);
+    if (el && el !== logo && el !== floatingLogo) {
+      const bg = getComputedStyle(el).backgroundColor;
+      const match = bg.match(/\d+/g);
+      if (match) {
+        const [r, g, b] = match.map(Number);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        floatingLogo.classList.toggle('invert', luminance > 0.6);
+      }
+    }
+  }
+  window.addEventListener('scroll', checkLogoBg);
+  window.addEventListener('load', checkLogoBg);
+  setInterval(checkLogoBg, 500);
+}
+
 // ===== INTERACTIVE FLOATING SHAPES =====
 document.querySelectorAll('.interactive-shape').forEach(shape => {
   let baseX = parseFloat(shape.style.left);
