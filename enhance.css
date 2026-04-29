@@ -1,39 +1,11 @@
 /* ============================================================
-   enhance.css  — layers on top of style.css
-   • Cursor · Stats · Service cards · Grid · Micro-FX
-   • No box-shadow transitions, no backdrop-filter
+   enhance.css — layers on top of style.css
+   Light cards on dark background · Dark orange accents
    ============================================================ */
 
-/* ── Custom Cursor ─────────────────────────────────────────── */
-*, *::before, *::after { cursor: none !important; }
-
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: #c47a38;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: opacity .15s ease, transform .1s ease;
-  will-change: transform;
-  mix-blend-mode: screen;
-}
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(196,122,56,.22);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: width .2s ease, height .2s ease, border-color .2s ease, opacity .15s ease;
-  will-change: transform;
-}
-body.cursor-hover .cursor-dot  { transform: translate(-50%,-50%) scale(.75); background: #fff; }
-body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(196,122,56,.38); }
+/* ── Restore default cursor ────────────────────────────────── */
+*, *::before, *::after { cursor: auto !important; }
+a, button, [role="button"], .pill-link, .service-mini { cursor: pointer !important; }
 
 
 /* ── Service cards ─────────────────────────────────────────── */
@@ -75,7 +47,7 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
 
 
 /* ══════════════════════════════════════════════════════════════
-   SCRAPYARD GRID  — side by side, 3 cols → 2 → 1
+   SCRAPYARD GRID — light cards on dark page
 ══════════════════════════════════════════════════════════════ */
 .scrap-grid {
   display: grid;
@@ -88,14 +60,11 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
   box-sizing: border-box;
 }
 
-@media (max-width: 860px) {
-  .scrap-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 540px) {
-  .scrap-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 860px) { .scrap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .scrap-grid { grid-template-columns: 1fr; } }
 
-/* ── Card ──────────────────────────────────────────────────── */
+
+/* ── Card — light background, dark text ─────────────────────── */
 .scrap-card .scrap-item {
   display: flex;
   flex-direction: column;
@@ -103,20 +72,21 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  box-shadow: 0 4px 18px rgba(0,0,0,.32);   /* static — not animated */
+  background: #f2ede8;           /* warm off-white */
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
   transition: opacity .25s ease;
 }
-.scrap-card .scrap-item:hover { opacity: .88; }
+.scrap-card .scrap-item:hover { opacity: .92; }
 
-/* image */
+
+/* ── Image ──────────────────────────────────────────────────── */
 .scrap-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  background: #060c09;
+  background: #e0d8d0;
 }
 .scrap-img-wrap img {
   width: 100%;
@@ -128,16 +98,17 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
 }
 .scrap-card .scrap-item:hover .scrap-img-wrap img { transform: scale(1.05); }
 
-/* overlay */
+
+/* ── Hover overlay ──────────────────────────────────────────── */
 .scrap-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.55);
+  background: rgba(0,0,0,.5);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #e8d0b8;
+  color: #f2ede8;
   font-size: .84rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -147,7 +118,8 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
 }
 .scrap-card .scrap-item:hover .scrap-overlay { opacity: 1; }
 
-/* gradient covers (fallback if img removed) */
+
+/* ── Gradient covers (Alisa / Colombe) ──────────────────────── */
 .scrap-gradient-cover {
   width: 100%; height: 100%;
   display: flex;
@@ -164,28 +136,30 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
 .cover-label {
   font-size: .9rem;
   font-weight: 700;
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.75);
   letter-spacing: 2.5px;
   text-transform: uppercase;
   text-shadow: 0 2px 10px rgba(0,0,0,.9);
 }
 
-/* caption */
+
+/* ── Caption — dark text on light card ──────────────────────── */
 .scrap-caption {
   padding: 14px 16px 6px;
   font-size: .82rem;
   line-height: 1.5;
-  color: rgba(255,255,255,.6);
+  color: #5a4a3a;               /* warm dark brown */
   flex: 1;
 }
 .scrap-caption strong {
   display: block;
-  color: #fff;
+  color: #1a1208;               /* near-black warm */
   font-size: .94rem;
   margin-bottom: 4px;
 }
 
-/* tags */
+
+/* ── Tags — dark text on light card ─────────────────────────── */
 .scrap-tags {
   display: flex;
   flex-wrap: wrap;
@@ -193,20 +167,20 @@ body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(1
   padding: 8px 16px 14px;
 }
 .scrap-tag {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
-  color: rgba(255,255,255,.5);
+  background: rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.12);
+  color: #7a5030;               /* dark orange-brown */
   font-size: .67rem;
   font-weight: 600;
   letter-spacing: .8px;
   text-transform: uppercase;
   padding: 3px 8px;
   border-radius: 20px;
+  transition: background .2s ease, color .2s ease;
 }
 .scrap-card .scrap-item:hover .scrap-tag {
-  background: rgba(196,122,56,.08);
-  border-color: rgba(196,122,56,.2);
-  color: #d4894a;
+  background: rgba(196,100,30,.12);
+  color: #b85a1a;
 }
 
 
