@@ -1,12 +1,11 @@
 /* ============================================================
-   enhance.js — magnetic buttons + scroll reveal only
-   Cursor removed (system pointer restored)
+   enhance.js — magnetic buttons + scroll reveal
+   Dark mode is handled entirely by CSS (prefers-color-scheme)
    ============================================================ */
 
 (function () {
   'use strict';
 
-  const qs  = s => document.querySelector(s);
   const qsa = s => [...document.querySelectorAll(s)];
 
   /* ── Magnetic Buttons ────────────────────────────────────── */
