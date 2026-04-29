@@ -1,184 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sybil Azriel | 1st Alien</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sybil Azriel | 1st Alien</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="enhance.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <!-- Warm Gradient Background -->
-    <div class="gradient-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-        <div class="gradient-orb orb-4"></div>
-        <div class="gradient-noise"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Warm Gradient Background -->
+  <div class="gradient-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="gradient-orb orb-4"></div>
+    <div class="gradient-noise"></div>
+  </div>
+
+  <canvas id="starfield"></canvas>
+
+  <!-- Interactive floating shapes -->
+  <div class="interactive-shape shape-ring"   style="width:60px;height:60px;top:15%;left:8%;"></div>
+  <div class="interactive-shape shape-dot"    style="width:14px;height:14px;top:25%;left:75%;"></div>
+  <div class="interactive-shape shape-square" style="width:40px;height:40px;top:65%;left:12%;"></div>
+  <div class="interactive-shape shape-ring"   style="width:30px;height:30px;top:80%;left:85%;"></div>
+  <div class="interactive-shape shape-dot"    style="width:20px;height:20px;top:45%;left:90%;"></div>
+  <div class="interactive-shape shape-square" style="width:24px;height:24px;top:10%;left:55%;"></div>
+
+  <!-- BOTTOM PILL NAVIGATION -->
+  <nav class="pill-nav">
+    <a href="#home"      class="pill-link active" data-section="home">
+      <i class='bx bx-home'></i><span>Home</span>
+    </a>
+    <a href="#about"     class="pill-link" data-section="about">
+      <i class='bx bx-user'></i><span>About</span>
+    </a>
+    <a href="#scrapyard" class="pill-link" data-section="scrapyard">
+      <i class='bx bx-planet'></i><span>Scrapyard</span>
+    </a>
+    <a href="https://wa.me/233020919182" class="pill-link" target="_blank">
+      <i class='bx bx-message-rounded-dots'></i><span>Contact</span>
+    </a>
+  </nav>
+
+  <!-- LOGO -->
+  <div class="floating-logo">
+    <img src="image/alienlogo.png" alt="1st Alien" class="img-logo">
+  </div>
+
+  <!-- HERO SPLIT -->
+  <section class="hero-split" id="home">
+
+    <!-- LEFT: Name & CTA -->
+    <div class="hero-left">
+      <div class="home-content reveal">
+        <h1 class="glow">Hi, I'm Sybil Azriel</h1>
+        <h3 class="typing-text"></h3>
+        <p>A versatile creative with a passion for bringing ideas to life.</p>
+        <div class="btn-box">
+          <a href="https://www.instagram.com/_1st.alien/" target="_blank" class="magnetic-btn">Hire Me</a>
+          <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank" class="magnetic-btn">Let's Talk</a>
+        </div>
+        <div class="home-sci">
+          <a href="https://www.instagram.com/_1st.alien/" target="_blank"><i class='bx bxl-instagram'></i></a>
+          <a href="#"><i class='bx bxl-facebook'></i></a>
+          <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank"><i class='bx bxl-whatsapp-square'></i></a>
+        </div>
+      </div>
     </div>
 
-    <canvas id="starfield"></canvas>
+    <!-- RIGHT: About + Compact Services -->
+    <div class="hero-right" id="about">
+      <div class="about-container reveal">
+        <h1 class="glow">About Me</h1>
+        <p class="about-text">
+          I'm a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs.
+          With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored
+          to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not
+          only stand out but also communicate effectively.
+        </p>
 
-    <!-- Interactive floating shapes -->
-    <div class="interactive-shape shape-ring" style="width:60px;height:60px;top:15%;left:8%;"></div>
-    <div class="interactive-shape shape-dot" style="width:14px;height:14px;top:25%;left:75%;"></div>
-    <div class="interactive-shape shape-square" style="width:40px;height:40px;top:65%;left:12%;"></div>
-    <div class="interactive-shape shape-ring" style="width:30px;height:30px;top:80%;left:85%;"></div>
-    <div class="interactive-shape shape-dot" style="width:20px;height:20px;top:45%;left:90%;"></div>
-    <div class="interactive-shape shape-square" style="width:24px;height:24px;top:10%;left:55%;"></div>
+        <!-- Stats Row -->
+        <div class="stats-row reveal">
+          <div class="stat-item">
+            <span class="stat-num" data-target="3">0</span><span class="stat-suffix">+</span>
+            <p>Years Active</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span>
+            <p>Projects Done</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="15">0</span><span class="stat-suffix">+</span>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+      </div>
 
-    <!-- BOTTOM PILL NAVIGATION -->
-    <nav class="pill-nav">
-        <a href="#home" class="pill-link active" data-section="home">
-            <i class='bx bx-home'></i>
-            <span>Home</span>
+      <div class="services-compact reveal">
+        <a href="https://1stalien.pixieset.com" target="_blank" class="service-mini tilt-card">
+          <i class='bx bxs-pen'></i>
+          <div class="service-mini-text">
+            <h3>Graphic Design</h3>
+            <p>Branding, logos, social media graphics & marketing collateral</p>
+          </div>
+          <div class="service-hover-glow"></div>
         </a>
-        <a href="#about" class="pill-link" data-section="about">
-            <i class='bx bx-user'></i>
-            <span>About</span>
-        </a>
-        <a href="#scrapyard" class="pill-link" data-section="scrapyard">
-            <i class='bx bx-planet'></i>
-            <span>Scrapyard</span>
-        </a>
-        <a href="https://wa.me/233020919182" class="pill-link" target="_blank">
-            <i class='bx bx-message-rounded-dots'></i>
-            <span>Contact</span>
-        </a>
-    </nav>
+        <div class="service-mini tilt-card">
+          <i class='bx bxs-videos'></i>
+          <div class="service-mini-text">
+            <h3>Motion Graphics</h3>
+            <p>Explainer videos, product animations & title sequences</p>
+          </div>
+          <div class="service-hover-glow"></div>
+        </div>
+        <div class="service-mini tilt-card">
+          <i class='bx bxl-blender'></i>
+          <div class="service-mini-text">
+            <h3>3D Design</h3>
+            <p>Product visualizations, renderings & immersive 3D visuals</p>
+          </div>
+          <div class="service-hover-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- LOGO -->
-    <div class="floating-logo">
-        <img src="image/alienlogo.png" alt="1st Alien" class="img-logo">
+  <!-- ─────────────────────────────────────────────────
+       DIGITAL SCRAPYARD — CAROUSEL
+  ───────────────────────────────────────────────── -->
+  <section class="scrapyard-section" id="scrapyard">
+    <div class="scrapyard-header reveal">
+      <h1 class="glow">Digital Scrapyard</h1>
+      <p>A collection of works, experiments, and creative debris.</p>
     </div>
 
-    <!-- HERO SPLIT: Name left, About+Services right -->
-    <section class="hero-split" id="home">
-        <!-- LEFT: Name & CTA -->
-        <div class="hero-left">
-            <div class="home-content reveal">
-                <h1 class="glow">Hi, I'm Sybil Azriel</h1>
-                <h3 class="typing-text"></h3>
-                <p>A versatile creative with a passion for bringing ideas to life.</p>
+    <div class="carousel-wrapper">
+      <!-- Prev / Next arrows -->
+      <button class="carousel-btn carousel-prev" aria-label="Previous">
+        <i class='bx bx-chevron-left'></i>
+      </button>
+      <button class="carousel-btn carousel-next" aria-label="Next">
+        <i class='bx bx-chevron-right'></i>
+      </button>
 
-                <div class="btn-box">
-                    <a href="https://www.instagram.com/_1st.alien/" target="_blank">Hire Me</a>
-                    <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank">Let's Talk</a>
-                </div>
+      <div class="carousel-track-container">
+        <div class="carousel-track">
 
-                <div class="home-sci">
-                    <a href="https://www.instagram.com/_1st.alien/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="https://wa.me/message/RRDWKMW5AABNC1" target="_blank"><i class='bx bxl-whatsapp-square'></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT: About + Compact Services -->
-        <div class="hero-right" id="about">
-            <div class="about-container reveal">
-                <h1 class="glow">About Me</h1>
-                <p class="about-text">
-                    I'm a passionate Graphic Designer based in Ghana, dedicated to creating visually compelling and impactful designs. With a strong foundation in Motion Graphics and 3D Graphics, I offer a diverse range of creative services tailored to meet the unique needs of each client. My approach combines creativity with strategy to deliver designs that not only stand out but also communicate effectively.
-                </p>
-            </div>
-
-            <div class="services-compact reveal">
-                <a href="https://1stalien.pixieset.com" target="_blank" class="service-mini">
-                    <i class='bx bxs-pen'></i>
-                    <div class="service-mini-text">
-                        <h3>Graphic Design</h3>
-                        <p>Branding, logos, social media graphics & marketing collateral</p>
-                    </div>
-                </a>
-                <div class="service-mini">
-                    <i class='bx bxs-videos'></i>
-                    <div class="service-mini-text">
-                        <h3>Motion Graphics</h3>
-                        <p>Explainer videos, product animations & title sequences</p>
-                    </div>
-                </div>
-                <div class="service-mini">
-                    <i class='bx bxl-blender'></i>
-                    <div class="service-mini-text">
-                        <h3>3D Design</h3>
-                        <p>Product visualizations, renderings & immersive 3D visuals</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SCRAPYARD / PORTFOLIO -->
-    <section class="scrapyard-section" id="scrapyard">
-        <div class="scrapyard-header reveal">
-            <h1 class="glow">Digital Scrapyard</h1>
-            <p>A collection of works, experiments, and creative debris.</p>
-        </div>
-
-        <div class="scrapyard-grid">
-            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item reveal">
+          <!-- 1 Essential Cosmetics -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
                 <img src="https://images.pixieset.com/38097149/424e9502e3a05d6dca2e10c54d8de9b6-large.png" alt="Essential Cosmetics">
-                <div class="scrap-caption">
-                    <strong>Essential Cosmetics Branding</strong>
-                    Full brand identity design including logo, packaging, and social media assets.
-                </div>
-                <div class="scrap-tags">
-                    <span class="scrap-tag">Branding</span>
-                    <span class="scrap-tag">Packaging</span>
-                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>Essential Cosmetics Branding</strong>
+                Full brand identity design including logo, packaging, and social media assets.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Branding</span>
+                <span class="scrap-tag">Packaging</span>
+              </div>
             </a>
+          </div>
 
-            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item reveal">
+          <!-- 2 aeTech -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
                 <img src="https://images.pixieset.com/68197149/3f7cd934197eac4e8683f21ca45f6c07-large.png" alt="aeTech Digital Hub">
-                <div class="scrap-caption">
-                    <strong>aeTech Digital Hub</strong>
-                    Digital presence and marketing materials for a tech startup.
-                </div>
-                <div class="scrap-tags">
-                    <span class="scrap-tag">Graphic Design</span>
-                    <span class="scrap-tag">Marketing</span>
-                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>aeTech Digital Hub</strong>
+                Digital presence and marketing materials for a tech startup.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Graphic Design</span>
+                <span class="scrap-tag">Marketing</span>
+              </div>
             </a>
+          </div>
 
-            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item reveal">
+          <!-- 3 MoreClouds -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
                 <img src="https://images.pixieset.com/69140449/47a09a9cefc71a5a27a3395d2bf81058-large.png" alt="MoreClouds LTD">
-                <div class="scrap-caption">
-                    <strong>MoreClouds LTD Cloud Kitchen</strong>
-                    Brand identity and menu design for a cloud kitchen concept.
-                </div>
-                <div class="scrap-tags">
-                    <span class="scrap-tag">Branding</span>
-                    <span class="scrap-tag">Food</span>
-                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>MoreClouds LTD Cloud Kitchen</strong>
+                Brand identity and menu design for a cloud kitchen concept.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Branding</span>
+                <span class="scrap-tag">Food</span>
+              </div>
             </a>
+          </div>
 
-            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item reveal">
+          <!-- 4 Dicta's Catering -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
                 <img src="https://images.pixieset.com/53297149/de8b78f00169f5d637411051ff83cb71-large.png" alt="Dicta's Catering">
-                <div class="scrap-caption">
-                    <strong>Dicta's Catering Services</strong>
-                    Logo design, flyers, and social media content for a catering business.
-                </div>
-                <div class="scrap-tags">
-                    <span class="scrap-tag">Logo</span>
-                    <span class="scrap-tag">Social Media</span>
-                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>Dicta's Catering Services</strong>
+                Logo design, flyers, and social media content for a catering business.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Logo</span>
+                <span class="scrap-tag">Social Media</span>
+              </div>
             </a>
-        </div>
-    </section>
+          </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-content"></div>
+          <!-- 5 Colombe Apparel (NEW) -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com/colombeapparel/" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
+                <div class="scrap-gradient-cover colombe-cover">
+                  <span class="cover-label">Colombe Apparel</span>
+                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>Colombe Apparel</strong>
+                Fashion-forward visual identity, lookbook design, and brand collateral.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Fashion</span>
+                <span class="scrap-tag">Branding</span>
+                <span class="scrap-tag">Editorial</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 6 Alisa Hotels (NEW) -->
+          <div class="carousel-slide">
+            <a href="https://1stalien.pixieset.com/alisahotelsgraphicsandprints/" target="_blank" class="scrap-item tilt-card reveal">
+              <div class="scrap-img-wrap">
+                <div class="scrap-gradient-cover alisa-cover">
+                  <span class="cover-label">Alisa Hotels</span>
+                </div>
+                <div class="scrap-overlay"><i class='bx bx-link-external'></i> View Project</div>
+              </div>
+              <div class="scrap-caption">
+                <strong>Alisa Hotels — Graphics & Prints</strong>
+                Hospitality print design, marketing collateral & event graphics for Alisa Hotel Group.
+              </div>
+              <div class="scrap-tags">
+                <span class="scrap-tag">Hospitality</span>
+                <span class="scrap-tag">Print</span>
+                <span class="scrap-tag">Marketing</span>
+              </div>
+            </a>
+          </div>
+
+        </div><!-- /.carousel-track -->
+      </div><!-- /.carousel-track-container -->
+
+      <!-- Dots -->
+      <div class="carousel-dots"></div>
+    </div><!-- /.carousel-wrapper -->
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      &copy; 2025 Sybil Azriel | Designed by 1st Alien |
+      <a href="mailto:sybilazriel4@gmail.com">sybilazriel4@gmail.com</a>
     </div>
+  </footer>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            &copy; 2025 Sybil Azriel | Designed by 1st Alien | <a href="mailto:sybilazriel4@gmail.com">sybilazriel4@gmail.com</a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+  <script src="enhance.js"></script>
 </body>
 </html>
