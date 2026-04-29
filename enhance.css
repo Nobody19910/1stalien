@@ -1,6 +1,9 @@
 /* ============================================================
-   enhance.css  — layers on top of style.css
-   Carousel · Custom Cursor · Tilt Cards · Stats · Micro-FX
+   enhance.css  — performance-first layer on top of style.css
+   • NO box-shadow transitions  (forces GPU repaint every frame)
+   • NO backdrop-filter         (very expensive composite layer)
+   • NO transform: translateY on hover  (triggers layout)
+   • Animations: transform + opacity ONLY  (compositor-only)
    ============================================================ */
 
 /* ── Custom Cursor ─────────────────────────────────────────── */
@@ -8,35 +11,36 @@
 
 .cursor-dot {
   position: fixed;
+  top: 0; left: 0;
   width: 8px;
   height: 8px;
-  background: #00ff88;
+  background: #a8c4b0;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: transform .1s ease, background .2s ease, width .2s ease, height .2s ease;
-  box-shadow: 0 0 12px #00ff88, 0 0 24px rgba(0,255,136,.4);
+  /* only opacity + transform — no box-shadow anim */
+  transition: opacity .15s ease, transform .1s ease;
+  will-change: transform;
   mix-blend-mode: screen;
 }
 
 .cursor-ring {
   position: fixed;
+  top: 0; left: 0;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(0,255,136,.5);
+  border: 1.5px solid rgba(168,196,176,.22);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
   transform: translate(-50%, -50%);
-  transition: transform .12s ease, width .25s ease, height .25s ease, border-color .2s ease, opacity .2s ease;
+  transition: width .2s ease, height .2s ease, border-color .2s ease, opacity .15s ease;
+  will-change: transform;
 }
 
-body:hover .cursor-ring { opacity: 1; }
-
-/* expanded state when hovering clickables */
-body.cursor-hover .cursor-dot  { width: 6px; height: 6px; background: #fff; box-shadow: 0 0 16px #00ff88; }
-body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0,255,136,.9); }
+body.cursor-hover .cursor-dot  { transform: translate(-50%,-50%) scale(.75); background: #fff; }
+body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(168,196,176,.38); }
 
 
 /* ── Stats Row ─────────────────────────────────────────────── */
@@ -46,177 +50,174 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0
   margin-top: 1.6rem;
   flex-wrap: wrap;
 }
-
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 64px;
 }
-
 .stat-item .stat-num {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #00ff88;
+  color: #c8d8cc;
   line-height: 1;
   letter-spacing: -1px;
-  text-shadow: 0 0 18px rgba(0,255,136,.6);
 }
-
 .stat-item .stat-suffix {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #00ff88;
+  color: #c8d8cc;
   margin-left: 1px;
   align-self: flex-end;
   margin-bottom: 3px;
 }
-
 .stat-item p {
   font-size: .72rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.4);
   margin: 4px 0 0;
   text-align: center;
 }
 
 
-/* ── Service card glow on hover ────────────────────────────── */
+/* ── Service cards — opacity-only hover, no shadow transition ── */
 .service-mini {
   position: relative;
   overflow: hidden;
-  transition: transform .3s ease, box-shadow .3s ease;
+  /* static shadow baked in, not animated */
+  transition: opacity .25s ease;
 }
-.service-mini:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,255,136,.15);
-}
-.service-hover-glow {
+.service-mini:hover { opacity: .85; }
+
+/* shimmer via pseudo-element (transform only) */
+.service-mini::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(0,255,136,.08) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity .3s ease;
+  top: -50%; left: -80%;
+  width: 45%; height: 200%;
+  background: rgba(255,255,255,.06);
+  transform: skewX(-20deg) translateX(0);
+  transition: transform .5s ease;
   pointer-events: none;
 }
-.service-mini:hover .service-hover-glow { opacity: 1; }
+.service-mini:hover::after { transform: skewX(-20deg) translateX(450%); }
 
 
-/* ── Magnetic Button shimmer ───────────────────────────────── */
+/* ── Magnetic button shimmer (transform only) ──────────────── */
 .magnetic-btn {
   position: relative;
   overflow: hidden;
-  transition: transform .2s ease, box-shadow .2s ease;
+  /* JS handles translate, no CSS transition needed here */
 }
 .magnetic-btn::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -75%;
-  width: 50%;
-  height: 200%;
-  background: rgba(255,255,255,.18);
-  transform: skewX(-20deg);
-  transition: left .45s ease;
+  top: -50%; left: -80%;
+  width: 45%; height: 200%;
+  background: rgba(255,255,255,.1);
+  transform: skewX(-20deg) translateX(0);
+  transition: transform .45s ease;
   pointer-events: none;
 }
-.magnetic-btn:hover::after { left: 150%; }
-
-
-/* ── Tilt card 3-D effect ──────────────────────────────────── */
-.tilt-card {
-  transform-style: preserve-3d;
-  transition: transform .15s ease, box-shadow .15s ease;
-  will-change: transform;
-}
+.magnetic-btn:hover::after { transform: skewX(-20deg) translateX(480%); }
 
 
 /* ══════════════════════════════════════════════════════════════
-   CAROUSEL
+   CAROUSEL  — GPU-composited, no layout-triggering props
 ══════════════════════════════════════════════════════════════ */
 .carousel-wrapper {
   position: relative;
   width: 100%;
   max-width: 1200px;
   margin: 2.5rem auto 0;
-  padding: 0 60px;
+  padding: 0 56px;
   box-sizing: border-box;
   user-select: none;
+  /* contain prevents layout escaping this subtree */
+  contain: layout style;
 }
 
 .carousel-track-container {
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .carousel-track {
   display: flex;
-  gap: 24px;
-  transition: transform .5s cubic-bezier(.4,0,.2,1);
+  /* gap handled by margin-right on slides for precise math */
+  transition: transform .45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
 
-/* each slide occupies a fraction of the container */
 .carousel-slide {
-  flex: 0 0 calc(33.333% - 16px);
-  min-width: 0;
+  /* width set by JS at runtime for pixel-perfect math */
+  flex-shrink: 0;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
+.carousel-slide:last-child { padding-right: 0; }
 
-/* ── Scrap card overrides for carousel ─────────────────────── */
+
+/* ── Card — static shadow, border animated via opacity pseudo ── */
 .carousel-slide .scrap-item {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
   background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.08);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  /* static border — not animated */
+  border: 1px solid rgba(255,255,255,.07);
+  /* single static shadow — NOT in transition */
+  box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  /* only opacity transition on the card itself */
+  transition: opacity .25s ease;
 }
-.carousel-slide .scrap-item:hover {
-  border-color: rgba(0,255,136,.3);
-  box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(0,255,136,.15);
-}
+.carousel-slide .scrap-item:hover { opacity: .92; }
 
-/* image wrapper */
+/* image */
 .scrap-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 4/3;
   overflow: hidden;
-  background: #0a0a12;
+  background: #060c09;
 }
 .scrap-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .5s ease;
+  /* transform-only scale — composited */
+  transition: transform .45s ease;
+  will-change: transform;
 }
-.carousel-slide .scrap-item:hover .scrap-img-wrap img { transform: scale(1.06); }
+.carousel-slide .scrap-item:hover .scrap-img-wrap img {
+  transform: scale(1.05);
+}
 
-/* overlay on hover */
+/* overlay — opacity only */
 .scrap-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.55);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #00ff88;
-  font-size: .85rem;
+  color: #dce8e2;
+  font-size: .84rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity .25s ease;
 }
 .carousel-slide .scrap-item:hover .scrap-overlay { opacity: 1; }
 
-/* gradient cover cards (for items without images) */
+/* gradient covers */
 .scrap-gradient-cover {
   width: 100%;
   height: 100%;
@@ -225,51 +226,35 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0
   padding: 16px;
   box-sizing: border-box;
 }
-
 .colombe-cover {
-  background: linear-gradient(135deg,
-    #2a1a1a 0%,
-    #4a2030 30%,
-    #7a3848 60%,
-    #c27d5a 100%);
+  background: linear-gradient(145deg, #120a09 0%, #2a1318 40%, #3e1e27 70%, #5c2d36 100%);
 }
-
 .alisa-cover {
-  background: linear-gradient(135deg,
-    #0a1628 0%,
-    #1a2d52 30%,
-    #1a3a2a 65%,
-    #b8892a 100%);
+  background: linear-gradient(145deg, #060e0a 0%, #0c1910 40%, #112416 70%, #1a3020 100%);
 }
-
 .cover-label {
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 700;
-  color: rgba(255,255,255,.9);
-  letter-spacing: 2px;
+  color: rgba(255,255,255,.72);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0,0,0,.6);
-  z-index: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,.9);
 }
-
-.carousel-slide .scrap-item:hover .scrap-gradient-cover { filter: brightness(1.1); }
-.scrap-gradient-cover { transition: filter .3s ease; }
 
 /* caption & tags */
 .scrap-caption {
   padding: 14px 16px 6px;
-  font-size: .83rem;
+  font-size: .82rem;
   line-height: 1.5;
-  color: rgba(255,255,255,.7);
+  color: rgba(255,255,255,.6);
   flex: 1;
 }
 .scrap-caption strong {
   display: block;
   color: #fff;
-  font-size: .95rem;
+  font-size: .94rem;
   margin-bottom: 4px;
 }
-
 .scrap-tags {
   display: flex;
   flex-wrap: wrap;
@@ -277,50 +262,42 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0
   padding: 8px 16px 14px;
 }
 .scrap-tag {
-  background: rgba(0,255,136,.1);
-  border: 1px solid rgba(0,255,136,.25);
-  color: #00ff88;
-  font-size: .68rem;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.52);
+  font-size: .67rem;
   font-weight: 600;
   letter-spacing: .8px;
   text-transform: uppercase;
   padding: 3px 8px;
   border-radius: 20px;
-  transition: background .2s ease;
-}
-.carousel-slide .scrap-item:hover .scrap-tag {
-  background: rgba(0,255,136,.2);
+  /* no transition on tags */
 }
 
 
-/* ── Carousel arrows ───────────────────────────────────────── */
+/* ── Carousel arrows — no backdrop-filter, static bg ──────── */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  color: #fff;
-  font-size: 1.4rem;
+  background: rgba(20,20,20,.7);    /* opaque dark — no blur needed */
+  border: 1px solid rgba(255,255,255,.09);
+  color: rgba(255,255,255,.6);
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: none;
   z-index: 10;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease;
-  backdrop-filter: blur(6px);
+  transition: opacity .2s ease;
 }
-.carousel-btn:hover {
-  background: rgba(0,255,136,.15);
-  border-color: rgba(0,255,136,.4);
-  transform: translateY(-50%) scale(1.1);
-}
-.carousel-prev { left: 4px; }
-.carousel-next { right: 4px; }
-.carousel-btn.disabled { opacity: .3; pointer-events: none; }
+.carousel-btn:hover { opacity: .75; }
+.carousel-prev { left: 2px; }
+.carousel-next { right: 2px; }
+.carousel-btn.disabled { opacity: .18; pointer-events: none; }
 
 
 /* ── Dots ──────────────────────────────────────────────────── */
@@ -328,41 +305,40 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(0
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 .carousel-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.14);
   cursor: none;
-  transition: background .3s ease, transform .3s ease;
+  border: none;
+  /* only transform + opacity */
+  transition: transform .25s ease, opacity .25s ease;
 }
 .carousel-dot.active {
-  background: #00ff88;
-  transform: scale(1.3);
-  box-shadow: 0 0 8px rgba(0,255,136,.6);
+  transform: scale(1.35);
+  opacity: 1;
+  background: #8aac96;
 }
 
 
-/* ── Responsive carousel ───────────────────────────────────── */
-@media (max-width: 900px) {
-  .carousel-slide { flex: 0 0 calc(50% - 12px); }
-  .carousel-wrapper { padding: 0 48px; }
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .carousel-wrapper { padding: 0 44px; }
 }
-
-@media (max-width: 560px) {
-  .carousel-slide { flex: 0 0 calc(100% - 0px); }
-  .carousel-wrapper { padding: 0 36px; }
-  .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+@media (max-width: 540px) {
+  .carousel-wrapper { padding: 0 32px; }
+  .carousel-btn { width: 34px; height: 34px; font-size: 1.1rem; }
 }
 
 
-/* ── Scroll-reveal base ────────────────────────────────────── */
+/* ── Scroll-reveal ──────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s ease;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
 }
 .reveal.visible {
   opacity: 1;
